@@ -14,6 +14,7 @@ var json = jsoniter.ConfigCompatibleWithStandardLibrary
 var re = regexp.MustCompile("^([\\d.]+) (\\S+) (\\S+) \\[([\\w:/]+\\s[\\+\\-]\\d{2}:?\\d{2}){0,1}\\] \"(.+?)\" (\\d{3}) (\\d+)")
 const dateLayout = "02/Jan/2006:15:04:05 -07:00"
 
+// AccessLog is Apache access log
 type AccessLog struct {
 	Host         string `json:"host"`
 	Ident        string `json:"ident"`
