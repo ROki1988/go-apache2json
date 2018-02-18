@@ -75,8 +75,8 @@ func firehoseEventConvert(request events.KinesisFirehoseEvent) (events.KinesisFi
 	var res = events.KinesisFirehoseResponse{}
 	for _, v := range request.Records {
 		res.Records = append(res.Records, firehoseEventRecordConvert(v))
-		log.Println(v)
 	}
+	log.Printf("records: %d", len(res.Records))
 	return res, nil
 }
 
