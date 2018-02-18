@@ -3,14 +3,13 @@ package main
 import (
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/json-iterator/go"
+	"encoding/json"
 	"log"
 	"regexp"
 	"strconv"
 	"time"
 )
 
-var json = jsoniter.ConfigCompatibleWithStandardLibrary
 var re = regexp.MustCompile("^([\\d.]+) (\\S+) (\\S+) \\[([\\w:/]+\\s[\\+\\-]\\d{2}:?\\d{2}){0,1}\\] \"(.+?)\" (\\d{3}) (\\d+)")
 const dateLayout = "02/Jan/2006:15:04:05 -07:00"
 

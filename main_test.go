@@ -3,6 +3,7 @@ package main
 import (
 	"reflect"
 	"testing"
+	"encoding/json"
 )
 
 func Test_firehoseDataConvert(t *testing.T) {
