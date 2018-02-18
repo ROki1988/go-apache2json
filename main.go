@@ -4,7 +4,6 @@ import (
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/json-iterator/go"
-	"encoding/base64"
 	"log"
 	"regexp"
 	"strconv"
@@ -13,7 +12,6 @@ import (
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
 var re = regexp.MustCompile("^([\\d.]+) (\\S+) (\\S+) \\[([\\w:/]+\\s[\\+\\-]\\d{2}:?\\d{2}){0,1}\\] \"(.+?)\" (\\d{3}) (\\d+)")
-var b64 = base64.StdEncoding
 const dateLayout = "02/Jan/2006:15:04:05 -07:00"
 
 // AccessLog is Apache access log
@@ -66,7 +64,7 @@ func firehoseEventRecordConvert(input events.KinesisFirehoseEventRecord) (events
 		copy(res.Data, input.Data)
 		res.Result = events.KinesisFirehoseTransformedStateProcessingFailed
 	} else {
-		res.Data = []byte(b64.EncodeToString(t))
+		res.Data = t
 		res.Result = events.KinesisFirehoseTransformedStateOk
 	}
 
