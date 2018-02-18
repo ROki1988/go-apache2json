@@ -61,7 +61,7 @@ func firehoseEventRecordConvert(input events.KinesisFirehoseEventRecord) (events
 	var t, e = firehoseDataConvert(input.Data)
 	if e != nil {
 		log.Println(e)
-		copy(res.Data, input.Data)
+		res.Data = input.Data
 		res.Result = events.KinesisFirehoseTransformedStateProcessingFailed
 	} else {
 		res.Data = t
