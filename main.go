@@ -66,7 +66,7 @@ func firehoseEventRecordConvert(input events.KinesisFirehoseEventRecord) (events
 		copy(res.Data, input.Data)
 		res.Result = events.KinesisFirehoseTransformedStateProcessingFailed
 	} else {
-		b64.Encode(res.Data, t)
+		res.Data = []byte(b64.EncodeToString(t))
 		res.Result = events.KinesisFirehoseTransformedStateOk
 	}
 
